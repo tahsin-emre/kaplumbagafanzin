@@ -11,9 +11,6 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(
               title: Text('Kaplumbağa'),
             ),
-            body: Center(
-                child: Container(
-              child: Text('Kaplumbağa')
-            ))));
+            body: Center(child: Container(child: Text('Kaplumbağa - Hello')))));
   }
 }
