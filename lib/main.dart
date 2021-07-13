@@ -4,7 +4,19 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
+  late TabController _controller;
+  @override
+  void initState() {
+    _controller = TabController(length: 3, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,6 +26,7 @@ class MyApp extends StatelessWidget {
             body: Column(
           children: [
             header(),
+            bar(),
             Expanded(child: body()),
             footer(),
           ],
@@ -29,9 +42,29 @@ class MyApp extends StatelessWidget {
           Image.asset(
             'assets/logo.png',
             fit: BoxFit.fitHeight,
+            width: 500,
           )
         ],
       ),
+    );
+  }
+
+  Widget bar() {
+    return TabBar(
+      indicatorColor: Colors.black,
+      labelColor: Colors.black,
+      controller: _controller,
+      tabs: [
+        Tab(
+          text: 'ANASAYFA',
+        ),
+        Tab(
+          text: 'SAYILARIMIZ',
+        ),
+        Tab(
+          text: 'GALERİ',
+        ),
+      ],
     );
   }
 
