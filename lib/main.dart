@@ -11,10 +11,47 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Kaplumbağa Fanzin',
         home: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text('Kaplumbağa'),
-            ),
-            body: Center(child: Container(child: Text('Kaplumbağa - Hello')))));
+            body: Column(
+          children: [
+            header(),
+            Expanded(child: body()),
+            footer(),
+          ],
+        )));
+  }
+
+  Widget header() {
+    return Container(
+      margin: EdgeInsets.only(left: 20, top: 20),
+      width: double.infinity,
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/logo.png',
+            fit: BoxFit.fitHeight,
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget body() {
+    return Center(child: Container(child: Text('Kaplumbağa - Hello')));
+  }
+
+  Widget footer() {
+    return Container(
+      margin: EdgeInsets.only(left: 20, top: 20),
+      width: double.infinity,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Image.asset(
+            'assets/logo.png',
+            fit: BoxFit.fitHeight,
+          )
+        ],
+      ),
+    );
   }
 }
