@@ -12,7 +12,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late TabController _tabcontroller;
   @override
   void initState() {
-    _tabcontroller = TabController(length: 3, vsync: this, initialIndex: 0);
+    _tabcontroller =
+        TabController(length: tabs.length, vsync: this, initialIndex: 0);
     super.initState();
   }
 
@@ -61,26 +62,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         labelColor: Colors.black,
         controller: _tabcontroller,
         overlayColor: MaterialStateProperty.all(Colors.transparent),
-        tabs: [
-          Tab(
-            child: Container(
-              decoration: BoxDecoration(border: Border.all()),
-              child: Center(child: Text('ANASAYFA')),
-            ),
-          ),
-          Tab(
-            child: Container(
-              decoration: BoxDecoration(border: Border.all()),
-              child: Center(child: Text('SAYILARIMIZ')),
-            ),
-          ),
-          Tab(
-            child: Container(
-              decoration: BoxDecoration(border: Border.all()),
-              child: Center(child: Text('GALERİ')),
-            ),
-          ),
-        ],
+        tabs: tabs,
       ),
     );
   }
@@ -89,7 +71,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return TabBarView(
       controller: _tabcontroller,
       physics: NeverScrollableScrollPhysics(),
-      children: [Anasayfa(), Sayilarimiz(), Galeri()],
+      children: [Anasayfa(), Sayilarimiz(), Galeri(), Galeri()],
     );
   }
 
@@ -107,5 +89,34 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         ],
       ),
     );
+  }
+
+  List<Widget> get tabs {
+    return [
+      Tab(
+        child: Container(
+          decoration: BoxDecoration(border: Border.all()),
+          child: Center(child: Text('ANASAYFA')),
+        ),
+      ),
+      Tab(
+        child: Container(
+          decoration: BoxDecoration(border: Border.all()),
+          child: Center(child: Text('SAYILARIMIZ')),
+        ),
+      ),
+      Tab(
+        child: Container(
+          decoration: BoxDecoration(border: Border.all()),
+          child: Center(child: Text('GALERİ')),
+        ),
+      ),
+      Tab(
+        child: Container(
+          decoration: BoxDecoration(border: Border.all()),
+          child: Center(child: Text('İLETİŞİM')),
+        ),
+      ),
+    ];
   }
 }
