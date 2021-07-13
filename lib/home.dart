@@ -35,9 +35,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       width: double.infinity,
       child: Row(
         children: [
-          Image.asset(
-            'assets/logo.png',
-            fit: BoxFit.fitHeight,
+          InkWell(
+            hoverColor: Colors.transparent,
+            onTap: () {
+              _tabcontroller.index = 0;
+            },
+            child: Image.asset(
+              'assets/logo.png',
+              fit: BoxFit.fitHeight,
+            ),
           )
         ],
       ),
@@ -47,6 +53,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget bar() {
     return Container(
       child: TabBar(
+        labelStyle: TextStyle(fontWeight: FontWeight.bold),
         indicatorPadding: EdgeInsets.all(0),
         indicatorWeight: 2,
         indicatorSize: TabBarIndicatorSize.label,
