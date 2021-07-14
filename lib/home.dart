@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kaplumbaga/anasayfa.dart';
-import 'package:kaplumbaga/ekibimiz.dart';
-import 'package:kaplumbaga/galeri.dart';
-import 'package:kaplumbaga/iletisim.dart';
-import 'package:kaplumbaga/okulumuz.dart';
-import 'package:kaplumbaga/sayilarimiz.dart';
+import 'package:kaplumbaga/sayfalar/anasayfa.dart';
+import 'package:kaplumbaga/sayfalar/ekibimiz.dart';
+import 'package:kaplumbaga/sayfalar/galeri.dart';
+import 'package:kaplumbaga/sayfalar/iletisim.dart';
+import 'package:kaplumbaga/sayfalar/okulumuz.dart';
+import 'package:kaplumbaga/sayfalar/sayilarimiz.dart';
 
 class Home extends StatefulWidget {
   @override
