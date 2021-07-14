@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kaplumbaga/anasayfa.dart';
+import 'package:kaplumbaga/ekibimiz.dart';
 import 'package:kaplumbaga/galeri.dart';
+import 'package:kaplumbaga/iletisim.dart';
+import 'package:kaplumbaga/okulumuz.dart';
 import 'package:kaplumbaga/sayilarimiz.dart';
 
 class Home extends StatefulWidget {
@@ -71,7 +74,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return TabBarView(
       controller: _tabcontroller,
       physics: NeverScrollableScrollPhysics(),
-      children: [Anasayfa(), Sayilarimiz(), Galeri(), Galeri()],
+      children: [
+        Anasayfa(),
+        Sayilarimiz(),
+        Okulumuz(),
+        Galeri(),
+        Ekibimiz(),
+        Iletisim(),
+      ],
     );
   }
 
@@ -108,7 +118,19 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       Tab(
         child: Container(
           decoration: BoxDecoration(border: Border.all()),
-          child: Center(child: Text('GALERİ')),
+          child: Center(child: Text('OKULUMUZ')),
+        ),
+      ),
+      Tab(
+        child: Container(
+          decoration: BoxDecoration(border: Border.all()),
+          child: Center(child: Text('KAPLUMBAĞA TARİHİ')), //GALERİ
+        ),
+      ),
+      Tab(
+        child: Container(
+          decoration: BoxDecoration(border: Border.all()),
+          child: Center(child: Text('EKİBİMİZ')),
         ),
       ),
       Tab(
