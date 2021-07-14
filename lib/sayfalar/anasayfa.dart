@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaplumbaga/core/constants.dart';
 
 class Anasayfa extends StatefulWidget {
   @override
@@ -109,7 +110,7 @@ Widget mypost() {
               ),
             ),
             child: Center(
-              child: Text('Resim'),
+              child: Text('Yazo', style: kboldstyle),
             ),
           ),
           SizedBox(
@@ -125,7 +126,7 @@ Widget mypost() {
               ),
             ),
             child: Center(
-              child: Text('Yazı'),
+              child: Text('Yazı', style: ktextstyle),
             ),
           )
         ],
