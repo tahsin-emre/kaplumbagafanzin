@@ -110,7 +110,9 @@ Widget mypost() {
               ),
             ),
             child: Center(
-              child: Text('Yazo', style: kboldstyle),
+              child: Text(
+                'Yazı',
+              ),
             ),
           ),
           SizedBox(

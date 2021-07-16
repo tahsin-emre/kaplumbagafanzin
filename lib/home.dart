@@ -5,6 +5,7 @@ import 'package:kaplumbaga/sayfalar/galeri.dart';
 import 'package:kaplumbaga/sayfalar/iletisim.dart';
 import 'package:kaplumbaga/sayfalar/okulumuz.dart';
 import 'package:kaplumbaga/sayfalar/sayilarimiz.dart';
+import 'package:kaplumbaga/core/constants.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         header(),
         bar(),
         Expanded(child: body()),
-        // footer(),
+        //footer(),
       ],
     ));
   }
@@ -100,43 +101,51 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
     );
   }
+  /*Footer sadece sayfanın en altında sabit bir şekilde olmalı, instagram kısmı
+  dahil olmak üzere sayfanın en altına gelindiğinde footer ancak öyle gözükmeli */
 
   List<Widget> get tabs {
     return [
       Tab(
         child: Container(
           decoration: BoxDecoration(border: Border.all()),
-          child: Center(child: Text('ANASAYFA')),
+          child: Center(
+            child: Text('ANASAYFA', style: kboldstyle),
+          ),
         ),
       ),
       Tab(
         child: Container(
           decoration: BoxDecoration(border: Border.all()),
-          child: Center(child: Text('SAYILARIMIZ')),
+          child: Center(child: Text('SAYILARIMIZ', style: kboldstyle)),
         ),
       ),
       Tab(
         child: Container(
           decoration: BoxDecoration(border: Border.all()),
-          child: Center(child: Text('OKULUMUZ')),
+          child: Center(
+            child: Text('OKULUMUZ', style: kboldstyle),
+          ),
         ),
       ),
       Tab(
         child: Container(
           decoration: BoxDecoration(border: Border.all()),
-          child: Center(child: Text('KAPLUMBAĞA TARİHİ')), //GALERİ
+          child: Center(
+            child: Text('KAPLUMBAĞA TARİHİ', style: kboldstyle),
+          ), //GALERİ
         ),
       ),
       Tab(
         child: Container(
           decoration: BoxDecoration(border: Border.all()),
-          child: Center(child: Text('EKİBİMİZ')),
+          child: Center(child: Text('EKİBİMİZ', style: kboldstyle)),
         ),
       ),
       Tab(
         child: Container(
           decoration: BoxDecoration(border: Border.all()),
-          child: Center(child: Text('İLETİŞİM')),
+          child: Center(child: Text('İLETİŞİM', style: kboldstyle)),
         ),
       ),
     ];
