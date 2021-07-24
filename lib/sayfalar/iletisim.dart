@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:kaplumbaga/core/constants.dart';
 
 class Iletisim extends StatelessWidget {
   const Iletisim({Key? key}) : super(key: key);
@@ -28,7 +27,6 @@ Widget sayfa() {
   return Container(
       padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
       // alignment: Alignment.topCenter,
-      color: Colors.purple, //kalkacak
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 50, horizontal: 50),
         child: Row(
@@ -44,7 +42,6 @@ Widget sayfa() {
 
 Widget mailyaz() {
   return Container(
-    color: Colors.amber, //kalkacak
     width: 1000,
     child: Column(
       children: [

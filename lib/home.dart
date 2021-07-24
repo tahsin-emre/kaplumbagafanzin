@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kaplumbaga/sayfalar/anasayfa.dart';
 import 'package:kaplumbaga/sayfalar/ekibimiz.dart';
 import 'package:kaplumbaga/sayfalar/galeri.dart';
@@ -6,6 +7,8 @@ import 'package:kaplumbaga/sayfalar/iletisim.dart';
 import 'package:kaplumbaga/sayfalar/okulumuz.dart';
 import 'package:kaplumbaga/sayfalar/sayilarimiz.dart';
 import 'package:kaplumbaga/core/constants.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -23,15 +26,37 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
+    return Scaffold(body: ResponsiveBuilder(
+      builder: (context, info) {
+        return info.deviceScreenType == DeviceScreenType.desktop
+            ? newMethod()
+            : newMethod();
+      },
+    ));
+  }
+
+  Column newMethod() {
+    return Column(
       children: [
         header(),
         bar(),
+        InkWell(
+            onTap: () {
+              var uri = Uri(scheme: 'https', path: 'instagram.com/kaplumbagafanzin');
+              launch(uri.toString());
+            },
+            child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
+        SizedBox(width: 10),
+        InkWell(
+            onTap: () {
+              var uri = Uri(scheme: 'mailto', path: 'kaplumbagafanzin@hotmail.com');
+              launch(uri.toString());
+            },
+            child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
         Expanded(child: body()),
         //footer(),
       ],
-    ));
+    );
   }
 
   Widget header() {
@@ -39,17 +64,32 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       margin: EdgeInsets.only(left: 20, top: 20, bottom: 10),
       width: double.infinity,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            hoverColor: Colors.transparent,
-            onTap: () {
-              _tabcontroller.index = 0;
-            },
-            child: Image.asset(
-              'assets/logo.png',
-              fit: BoxFit.fitHeight,
-            ),
-          )
+              hoverColor: Colors.transparent,
+              onTap: () {
+                _tabcontroller.index = 0;
+              },
+              child: Image.asset('assets/logo.png', fit: BoxFit.fitHeight)),
+          Row(children: [
+            InkWell(
+                onTap: () {
+                  var uri =
+                      Uri(scheme: 'https', path: 'instagram.com/kaplumbagafanzin');
+                  launch(uri.toString());
+                },
+                child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
+            SizedBox(width: 10),
+            InkWell(
+                onTap: () {
+                  var uri =
+                      Uri(scheme: 'mailto', path: 'kaplumbagafanzin@hotmail.com');
+                  launch(uri.toString());
+                },
+                child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
+            SizedBox(width: 20)
+          ])
         ],
       ),
     );

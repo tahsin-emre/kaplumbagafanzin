@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kaplumbaga/core/constants.dart';
 
 class Galeri extends StatelessWidget {
   const Galeri({Key? key}) : super(key: key);
