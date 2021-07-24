@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kaplumbaga/home.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }
