@@ -58,7 +58,7 @@ Widget gonderiler() {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Baslik(),
+              baslik(),
               row(),
               row(),
               row(),
@@ -101,7 +101,7 @@ Widget mypost() {
   );
 }
 
-Widget Baslik() {
+Widget baslik() {
   return Container(
     width: 1200,
     height: 80,

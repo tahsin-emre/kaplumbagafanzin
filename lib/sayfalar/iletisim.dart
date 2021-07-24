@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:kaplumbaga/core/constants.dart';
 
@@ -80,7 +82,7 @@ Widget mailyaz() {
             width: 1000,
             height: 471,
             padding: EdgeInsets.symmetric(vertical: 6, horizontal: 6),
-            child: _buildTextComposer(),
+            child: _buildTextComposer('Yazmak istediğiniz şeyler...'),
           ),
         ),
       ],
@@ -88,12 +90,12 @@ Widget mailyaz() {
   );
 }
 
-Widget _buildTextComposer() {
+Widget _buildTextComposer(String hint) {
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 8.0),
     child: TextField(
-      decoration:
-          InputDecoration.collapsed(hintText: 'Yazmak istediğiniz şeyler...'),
+      selectionWidthStyle: BoxWidthStyle.tight,
+      decoration: InputDecoration.collapsed(hintText: hint),
     ),
   );
 }
