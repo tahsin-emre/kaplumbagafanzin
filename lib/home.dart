@@ -17,6 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late TabController _tabcontroller;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   @override
   void initState() {
     _tabcontroller =
@@ -26,70 +27,85 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: ResponsiveBuilder(
+    return ResponsiveBuilder(
       builder: (context, info) {
         return info.deviceScreenType == DeviceScreenType.desktop
-            ? newMethod()
-            : newMethod();
+            ? Scaffold(body: desktop())
+            : Scaffold(body: mobile(), drawer: buildDrawer, key: _scaffoldKey);
       },
-    ));
+    );
   }
 
-  Column newMethod() {
+  Column desktop() {
     return Column(
       children: [
-        header(),
+        header(true),
         bar(),
-        InkWell(
-            onTap: () {
-              var uri = Uri(scheme: 'https', path: 'instagram.com/kaplumbagafanzin');
-              launch(uri.toString());
-            },
-            child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
-        SizedBox(width: 10),
-        InkWell(
-            onTap: () {
-              var uri = Uri(scheme: 'mailto', path: 'kaplumbagafanzin@hotmail.com');
-              launch(uri.toString());
-            },
-            child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
-        Expanded(child: body()),
+        Expanded(child: body(false)),
         //footer(),
       ],
     );
   }
 
-  Widget header() {
+  ListView mobile() {
+    return ListView(
+      children: [
+        header(false),
+        body(true),
+        //footer(),
+      ],
+    );
+  }
+
+  Widget header(bool isDesk) {
     return Container(
       margin: EdgeInsets.only(left: 20, top: 20, bottom: 10),
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          InkWell(
-              hoverColor: Colors.transparent,
-              onTap: () {
-                _tabcontroller.index = 0;
-              },
-              child: Image.asset('assets/logo.png', fit: BoxFit.fitHeight)),
-          Row(children: [
-            InkWell(
-                onTap: () {
-                  var uri =
-                      Uri(scheme: 'https', path: 'instagram.com/kaplumbagafanzin');
-                  launch(uri.toString());
-                },
-                child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
-            SizedBox(width: 10),
-            InkWell(
-                onTap: () {
-                  var uri =
-                      Uri(scheme: 'mailto', path: 'kaplumbagafanzin@hotmail.com');
-                  launch(uri.toString());
-                },
-                child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
-            SizedBox(width: 20)
-          ])
+          Row(
+            children: [
+              isDesk
+                  ? SizedBox(width: 0.1)
+                  : Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: InkWell(
+                          onTap: () => _scaffoldKey.currentState!.openDrawer(),
+                          child: Icon(Icons.menu, size: 35)),
+                    ),
+              InkWell(
+                  hoverColor: Colors.transparent,
+                  onTap: () {
+                    _tabcontroller.index = 0;
+                  },
+                  child: Image.asset('assets/logo.png', fit: BoxFit.fitHeight)),
+            ],
+          ),
+          isDesk
+              ? Container(
+                  child: Row(children: [
+                    InkWell(
+                        onTap: () {
+                          var uri = Uri(
+                              scheme: 'https',
+                              path: 'instagram.com/kaplumbagafanzin');
+                          launch(uri.toString());
+                        },
+                        child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
+                    SizedBox(width: 10),
+                    InkWell(
+                        onTap: () {
+                          var uri = Uri(
+                              scheme: 'mailto',
+                              path: 'kaplumbagafanzin@hotmail.com');
+                          launch(uri.toString());
+                        },
+                        child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
+                    SizedBox(width: 20)
+                  ]),
+                )
+              : Container()
         ],
       ),
     );
@@ -111,18 +127,98 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     );
   }
 
-  Widget body() {
+  Widget body(bool isMobile) {
     return TabBarView(
       controller: _tabcontroller,
       physics: NeverScrollableScrollPhysics(),
       children: [
-        Anasayfa(),
+        Anasayfa(isMobile),
         Sayilarimiz(),
         Okulumuz(),
         Galeri(),
         Ekibimiz(),
         Iletisim(),
       ],
+    );
+  }
+
+  Drawer get buildDrawer {
+    return Drawer(
+      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Column(
+          children: [
+            SizedBox(height: 20),
+            ListTile(
+              onTap: () {
+                _tabcontroller.index = 0;
+                _scaffoldKey.currentState!.openEndDrawer();
+              },
+              title: Text('ANASAYFA'),
+            ),
+            Divider(color: Colors.black),
+            ListTile(
+              onTap: () {
+                _tabcontroller.index = 1;
+                _scaffoldKey.currentState!.openEndDrawer();
+              },
+              title: Text('SAYILARIMIZ'),
+            ),
+            Divider(color: Colors.black),
+            ListTile(
+              onTap: () {
+                _tabcontroller.index = 2;
+                _scaffoldKey.currentState!.openEndDrawer();
+              },
+              title: Text('OKULUMUZ'),
+            ),
+            Divider(color: Colors.black),
+            ListTile(
+              onTap: () {
+                _tabcontroller.index = 3;
+                _scaffoldKey.currentState!.openEndDrawer();
+              },
+              title: Text('KAPLUMBAĞA TARİHİ'),
+            ),
+            Divider(color: Colors.black),
+            ListTile(
+              onTap: () {
+                _tabcontroller.index = 4;
+                _scaffoldKey.currentState!.openEndDrawer();
+              },
+              title: Text('EKİBİMİZ'),
+            ),
+            Divider(color: Colors.black),
+            ListTile(
+              onTap: () {
+                _tabcontroller.index = 5;
+                _scaffoldKey.currentState!.openEndDrawer();
+              },
+              title: Text('İLETİŞİM'),
+            ),
+          ],
+        ),
+        Container(
+          child: Center(
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+              InkWell(
+                  onTap: () {
+                    var uri =
+                        Uri(scheme: 'https', path: 'instagram.com/kaplumbagafanzin');
+                    launch(uri.toString());
+                  },
+                  child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
+              SizedBox(width: 10),
+              InkWell(
+                  onTap: () {
+                    var uri =
+                        Uri(scheme: 'mailto', path: 'kaplumbagafanzin@hotmail.com');
+                    launch(uri.toString());
+                  },
+                  child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
+            ]),
+          ),
+        )
+      ]),
     );
   }
 
