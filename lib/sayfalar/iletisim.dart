@@ -94,6 +94,8 @@ Widget _buildTextComposer(String hint) {
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 8.0),
     child: TextField(
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
       selectionWidthStyle: BoxWidthStyle.tight,
       decoration: InputDecoration.collapsed(hintText: hint),
     ),
