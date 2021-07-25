@@ -1,91 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:kaplumbaga/galeri/galeriWidgets.dart';
+import 'package:kaplumbaga/homeWidgets.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class Galeri extends StatelessWidget {
   const Galeri({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(5.0),
-        child: Row(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(child: gonderiler()),
-            SizedBox(width: 10),
-            liste(),
-          ],
-        ),
-      ),
-    );
+    return ResponsiveBuilder(builder: (context, info) {
+      return info.deviceScreenType == DeviceScreenType.desktop
+          ? desktop()
+          : mobile();
+    });
   }
-}
 
-Widget liste() {
-  return Container(
-      // alignment: Alignment.left,
-      width: 200,
-      height: 1000,
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        border: Border.all(
-          color: Colors.black,
-          width: 1,
-        ),
-      ),
+  Widget desktop() {
+    return Container(
+      padding: EdgeInsets.all(20.0),
       child: Center(
-        child: Text('liste'),
-      ));
-}
-
-Widget gonderiler() {
-  return Container(
-    padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
-    // alignment: Alignment.topCenter,
-    decoration: BoxDecoration(
-      color: Colors.transparent,
-      border: Border.all(
-        color: Colors.black,
-        width: 1,
-      ),
-    ),
-    child: SingleChildScrollView(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
+        child: Container(
+          child: Row(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              baslik(),
-              row(),
-              row(),
-              row(),
-              row(),
+              Expanded(child: gonderiler()),
+              SizedBox(width: 10),
+              liste(),
             ],
           ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget row() {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [mypost(), mypost(), mypost(), mypost(), mypost()]),
-  );
-}
+  Widget mobile() {
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      child: ListView(
+        children: [
+          HomeWidgets.header(false),
+          Divider(),
+          Center(child: gonderiler())
+        ],
+      ),
+    );
+  }
 
-Widget mypost() {
-  return Padding(
-    padding: const EdgeInsets.all(10),
-    child: Container(
-      padding: const EdgeInsets.all(20),
-      width: 200,
-      height: 200,
+  Widget liste() {
+    return Container(
+        // alignment: Alignment.left,
+        width: 200,
+        height: 1000,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(
+            color: Colors.black,
+            width: 1,
+          ),
+        ),
+        child: Center(
+          child: Text('liste'),
+        ));
+  }
+
+  Widget gonderiler() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+      // alignment: Alignment.topCenter,
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(
@@ -93,20 +75,43 @@ Widget mypost() {
           width: 1,
         ),
       ),
-      child: Center(
-        child: Text('Resim'),
+      child: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                GaleriWidgets.baslik(),
+                Wrap(
+                  spacing: 10,
+                  children: [for (var i = 0; i < 40; i++) mypost()],
+                )
+              ],
+            ),
+          ),
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget baslik() {
-  return Container(
-    width: 1200,
-    height: 80,
-    color: Colors.purple,
-    child: Center(
-      child: Text('BAŞLIK YERİ İÇİ BOŞALACAK TEXT GELECEK'),
-    ),
-  );
+  Widget mypost() {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        width: 200,
+        height: 200,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(
+            color: Colors.black,
+            width: 1,
+          ),
+        ),
+        child: Center(
+          child: Text('Resim'),
+        ),
+      ),
+    );
+  }
 }

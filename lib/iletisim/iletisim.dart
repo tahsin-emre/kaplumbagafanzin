@@ -1,39 +1,43 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kaplumbaga/homeWidgets.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class Iletisim extends StatelessWidget {
   const Iletisim({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(5.0),
-        child: Row(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(child: sayfa()),
-          ],
-        ),
-      ),
-    );
+    return ResponsiveBuilder(builder: (context, info) {
+      return info.deviceScreenType == DeviceScreenType.desktop
+          ? desktop()
+          : mobile();
+    });
   }
 }
 
-Widget sayfa() {
+Widget desktop() {
   return Container(
-      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
-      // alignment: Alignment.topCenter,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 50, horizontal: 50),
-        child: mailyaz(),
-      ));
+    padding: EdgeInsets.all(20.0),
+    child: Center(child: iletisimFormu()),
+  );
 }
 
-Widget mailyaz() {
+Widget mobile() {
+  return Container(
+    padding: EdgeInsets.all(10.0),
+    child: ListView(
+      children: [
+        HomeWidgets.header(false),
+        Divider(),
+        Center(child: iletisimFormu())
+      ],
+    ),
+  );
+}
+
+Widget iletisimFormu() {
   return Container(
       width: 1000,
       child: Center(

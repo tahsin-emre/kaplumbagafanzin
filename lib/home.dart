@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kaplumbaga/anasayfa/anasayfa.dart';
-import 'package:kaplumbaga/home_widgets.dart';
+import 'package:kaplumbaga/homeWidgets.dart';
 import 'package:kaplumbaga/ekibimiz/ekibimiz.dart';
 import 'package:kaplumbaga/galeri/galeri.dart';
 import 'package:kaplumbaga/iletisim/iletisim.dart';
 import 'package:kaplumbaga/okulumuz/okulumuz.dart';
-import 'package:kaplumbaga/sayilarimiz/sayilarimiz.dart';
+import 'package:kaplumbaga/sayilar/sayilar.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Home extends StatefulWidget {
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       children: [
         HomeWidgets.header(true),
         HomeWidgets.bar,
-        Expanded(child: body(false)),
+        Expanded(child: body()),
         //footer(),
       ],
     );
@@ -51,18 +51,18 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget mobile() {
     return Column(
       children: [
-        Expanded(child: body(false)),
+        Expanded(child: body()),
         //footer(),
       ],
     );
   }
 
-  Widget body(bool isDesk) {
+  Widget body() {
     return TabBarView(
       controller: Home.tabcontroller,
       physics: NeverScrollableScrollPhysics(),
       children: [
-        Anasayfa(isDesk),
+        Anasayfa(),
         Sayilarimiz(),
         Okulumuz(),
         Galeri(),

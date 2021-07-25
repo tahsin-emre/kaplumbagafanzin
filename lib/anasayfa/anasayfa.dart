@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kaplumbaga/anasayfa/anasayfaWidgets.dart';
+import 'package:kaplumbaga/homeWidgets.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Anasayfa extends StatefulWidget {
-  late final bool isMobile;
-  Anasayfa(bool isMobile);
   @override
   _AnasayfaState createState() => _AnasayfaState();
 }
@@ -12,11 +11,11 @@ class Anasayfa extends StatefulWidget {
 class _AnasayfaState extends State<Anasayfa> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: ResponsiveBuilder(builder: (context, info) {
+    return ResponsiveBuilder(builder: (context, info) {
       return info.deviceScreenType == DeviceScreenType.desktop
           ? desktop()
           : mobile();
-    }));
+    });
   }
 
   Widget desktop() {
@@ -38,7 +37,12 @@ class _AnasayfaState extends State<Anasayfa> {
   Widget mobile() {
     return Container(
       padding: EdgeInsets.all(5.0),
-      child: gonderiler(false),
+      child: ListView(
+        children: [
+          HomeWidgets.header(false),
+          gonderiler(false),
+        ],
+      ),
     );
   }
 

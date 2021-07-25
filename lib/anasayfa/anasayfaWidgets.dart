@@ -3,16 +3,11 @@ import 'package:flutter/material.dart';
 class AnaSayfaWidgets {
   static Widget instagram() {
     return Container(
-        // alignment: Alignment.left,
         width: 400,
         height: 1000,
         decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(
-            color: Colors.black,
-            width: 1,
-          ),
-        ),
+            color: Colors.transparent,
+            border: Border.all(color: Colors.black, width: 1)),
         child: Center(
           child: Text('instagram'),
         ));
@@ -26,24 +21,14 @@ class AnaSayfaWidgets {
         width: 450,
         height: 500,
         decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(
-            color: Colors.black,
-            width: 1,
-          ),
-        ),
+            color: Colors.grey, border: Border.all(color: Colors.black, width: 1)),
         child: Column(
           children: [
             Container(
               width: 350,
               height: 350,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 1,
-                ),
-              ),
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               child: Center(
                 child: Text(
                   'Yazı',
