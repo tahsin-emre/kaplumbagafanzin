@@ -82,13 +82,13 @@ Widget iletisimFormu() {
             SizedBox(height: 15),
             Container(
               width: 1000,
-              height: 471,
+              height: 450,
               decoration: BoxDecoration(
                   color: Colors.transparent,
                   border: Border.all(color: Colors.black, width: 1)),
               child: Container(
                 width: 1000,
-                height: 471,
+                height: 450,
                 padding: EdgeInsets.symmetric(vertical: 6, horizontal: 6),
                 child: _buildTextComposer('Yazmak istediğiniz şeyler...'),
               ),

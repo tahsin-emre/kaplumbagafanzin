@@ -35,7 +35,8 @@ class HomeWidgets {
                   : Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
-                          onTap: () => Home.scaffoldKey.currentState!.openDrawer(),
+                          onTap: () =>
+                              Home.scaffoldKey.currentState!.openDrawer(),
                           child: Icon(Icons.menu, size: 35)),
                     ),
               InkWell(
@@ -77,7 +78,8 @@ class HomeWidgets {
 
   static Drawer get buildDrawer {
     return Drawer(
-      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Column(
           children: [
             SizedBox(height: 20),
@@ -132,23 +134,27 @@ class HomeWidgets {
         ),
         Container(
           child: Center(
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-              InkWell(
-                  onTap: () {
-                    var uri =
-                        Uri(scheme: 'https', path: 'instagram.com/kaplumbagafanzin');
-                    launch(uri.toString());
-                  },
-                  child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
-              SizedBox(width: 10),
-              InkWell(
-                  onTap: () {
-                    var uri =
-                        Uri(scheme: 'mailto', path: 'kaplumbagafanzin@hotmail.com');
-                    launch(uri.toString());
-                  },
-                  child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
-            ]),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                      onTap: () {
+                        var uri = Uri(
+                            scheme: 'https',
+                            path: 'instagram.com/kaplumbagafanzin');
+                        launch(uri.toString());
+                      },
+                      child: FaIcon(FontAwesomeIcons.instagram, size: 40)),
+                  SizedBox(width: 10),
+                  InkWell(
+                      onTap: () {
+                        var uri = Uri(
+                            scheme: 'mailto',
+                            path: 'kaplumbagafanzin@hotmail.com');
+                        launch(uri.toString());
+                      },
+                      child: FaIcon(FontAwesomeIcons.envelope, size: 40)),
+                ]),
           ),
         )
       ]),

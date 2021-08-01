@@ -41,7 +41,7 @@ class Galeri extends StatelessWidget {
         children: [
           HomeWidgets.header(false),
           Divider(),
-          Center(child: gonderiler())
+          Center(child: mobilgonderiler())
         ],
       ),
     );
@@ -82,6 +82,36 @@ class Galeri extends StatelessWidget {
             child: Column(
               children: [
                 GaleriWidgets.baslik(),
+                Wrap(
+                  spacing: 10,
+                  children: [for (var i = 0; i < 40; i++) mypost()],
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget mobilgonderiler() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+      // alignment: Alignment.topCenter,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        border: Border.all(
+          color: Colors.black,
+          width: 1,
+        ),
+      ),
+      child: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                GaleriWidgets.mobilbaslik(),
                 Wrap(
                   spacing: 10,
                   children: [for (var i = 0; i < 40; i++) mypost()],

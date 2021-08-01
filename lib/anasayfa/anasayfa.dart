@@ -48,18 +48,21 @@ class _AnasayfaState extends State<Anasayfa> {
 
   Widget gonderiler(bool isDesk) {
     return Container(
-        padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(
-            color: Colors.black,
-            width: 1,
+      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        border: Border.all(
+          color: Colors.black,
+          width: 1,
+        ),
+      ),
+      child: SingleChildScrollView(
+        child: Center(
+          child: Wrap(
+            children: [for (var i = 0; i < 10; i++) AnaSayfaWidgets.mypost()],
           ),
         ),
-        child: SingleChildScrollView(
-            child: Center(
-                child: Wrap(
-          children: [for (var i = 0; i < 10; i++) AnaSayfaWidgets.mypost()],
-        ))));
+      ),
+    );
   }
 }
